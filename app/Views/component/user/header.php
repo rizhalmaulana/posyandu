@@ -74,7 +74,7 @@
                                         alt="Icon Posyandu" width="50" height="50">
                                 </span>
                             </span>
-                            <span class="app-brand-text demo menu-text fw-bold">Dashboard Utama</span>
+                            <span class="app-brand-text menu-text fw-semibold">Tembang Santri</span>
                         </a>
 
                         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">

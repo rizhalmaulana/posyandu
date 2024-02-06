@@ -8,10 +8,9 @@
                                     <script>
                                     document.write(new Date().getFullYear());
                                     </script>
-                                    oleh
+                                    by
                                     <a href="https://pixinvent.com" target="_blank"
-                                        class="footer-link fw-medium">Kelompok
-                                        Lina</a>
+                                        class="footer-link fw-medium">Tembang Santri</a>
                                 </div>
                             </div>
                         </div>
