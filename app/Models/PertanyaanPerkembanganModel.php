@@ -17,10 +17,13 @@ class PertanyaanPerkembanganModel extends Model
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
 
-    public function getPertanyaanByRangeUsia($range) {
-        $query = $this->where('range_usia', $range)
-                ->get();
+    public function getPertanyaanByRangeUsia($fieldValuePairs) {
+        $query = $this->db->table($this->table);
 
-        return $query->getResultArray();
+        foreach ($fieldValuePairs as $pair) {
+            $query->orWhere($pair['field'], $pair['value']);
+        }
+
+        return $query->get()->getResultArray();
     }
 }

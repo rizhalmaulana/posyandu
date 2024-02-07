@@ -171,7 +171,7 @@
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <span class="fw-semibold d-block"><?= $session['nama_lengkap']; ?></span>
-                                                    <small class="text-muted"><?= $session['email']; ?></small>
+                                                    <small class="text-muted"><?= $session['username']; ?></small>
                                                 </div>
                                             </div>
                                         </a>

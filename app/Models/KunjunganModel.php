@@ -38,12 +38,12 @@ class KunjunganModel extends Model
 
     public function getRiwayatPerTahun($year) {
         $result = $this->db->table($this->table)
-            ->select('MONTH(tanggal_kunjungan) as month, COUNT(id_balita) as total_visits')
-            ->where('YEAR(tanggal_kunjungan)', $year)
-            ->groupBy('MONTH(tanggal_kunjungan)')
-            ->findAll();
+            ->select('MONTH(tgl_kunjungan) as month, COUNT(id_balita) as total_visits')
+            ->where('YEAR(tgl_kunjungan)', $year)
+            ->groupBy('MONTH(tgl_kunjungan)')
+            ->get();
         // Use the $result array as needed
-        return $result;
+        return $result->getResultArray();
     }
 
 }

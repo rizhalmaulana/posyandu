@@ -147,7 +147,7 @@
                                                     <a href="javascript:;" class="me-1"><span class="badge bg-label-<?= $textcolor; ?> rounded-pill"><?= $balita['jenis_kelamin'] ?></span></a>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-center">
-                                                    <a href="<?= base_url('dashboard/periksa/'. $balita['id']); ?>" class="btn btn-primary d-flex align-items-center me-3">
+                                                    <a href="<?= base_url('dashboard/periksa/'. $balita['id']); ?>" id="btnPeriksaBalita" class="btn btn-primary d-flex align-items-center me-3">
                                                         <i class="mdi mdi-account-check-outline me-1"></i>Periksa
                                                     </a>
                                                 </div>

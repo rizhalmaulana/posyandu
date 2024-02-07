@@ -12,7 +12,7 @@ class BalitaModel extends Model
     protected $table            = 'tbl_balita';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['id', 'id_posyandu', 'nik', 'nomor_kk', 'nama_lengkap', 'jenis_kelamin', 'tanggal_lahir', 'nama_ibu', 'nama_ayah', 'alamat'];
+    protected $allowedFields    = ['id', 'id_posyandu', 'nik', 'nomor_kk', 'nama_lengkap', 'jenis_kelamin', 'tanggal_lahir', 'nama_ibu', 'nama_ayah', 'status_balita', 'alamat'];
 
     // Dates
     protected $useTimestamps = false;

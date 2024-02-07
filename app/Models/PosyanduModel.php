@@ -13,7 +13,7 @@ class PosyanduModel extends Model
     protected $table            = 'tbl_posyandu';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['id', 'id_kota', 'id_kecamatan', 'id_kelurahan', 'nama_posyandu', 'alamat_posyandu', 'status_posyandu'];
+    protected $allowedFields    = ['id', 'id_kota', 'id_kecamatan', 'id_kelurahan', 'nama_posyandu', 'phone_posyandu', 'email_posyandu', 'alamat_posyandu', 'status_posyandu'];
     // Dates
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';

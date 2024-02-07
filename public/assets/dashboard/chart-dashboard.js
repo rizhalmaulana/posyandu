@@ -37,11 +37,8 @@
         .then(response => response.json())
         .then(data => {
             // Handle the data in your JavaScript
-            console.log('Data received:', data);
-            
-            // Use the data as needed, for example, update the DOM
-            document.getElementById('output').innerText = JSON.stringify(data);
-        }).catch(error => console.error('Error:', error));
+            var resultData = data.list_kunjungan;
+        });
     
     const weeklyOverviewChartEl = document.querySelector('#weeklyOverviewChart'),
     weeklyOverviewChartConfig = {

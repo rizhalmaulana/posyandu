@@ -33,14 +33,14 @@ class LoginController extends ResourceController
     public function auth_process() 
     {
         // Retrieve user input
-        $email = $this->request->getVar('email');
+        $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
         
         // Authenticate the user
-        if ($this->validateCredentials($email, $password)) {
+        if ($this->validateCredentials($username, $password)) {
             // Login successful
             // Redirect to a secure page after successful login
-            $this->setUserSession($email);
+            $this->setUserSession($username);
 
             // Set Routes With Status
             $status = session()->get('status');
@@ -94,8 +94,6 @@ class LoginController extends ResourceController
             'posyandu' => 'required',
             'gender' => 'required|in_list[Laki-laki,Perempuan]',
             'city' => 'required',
-            'phone' => 'required|is_unique[tbl_admin.phone_admin]',
-            'email' => 'required|valid_email|is_unique[tbl_admin.email_admin]',
         ];
         
         if ($this->validate($validationRules)) {
@@ -109,8 +107,6 @@ class LoginController extends ResourceController
                 'jenis_kelamin' => $this->request->getPost('gender'),
                 'tanggal_lahir' => $date_now,
                 'verified'      => 1,
-                'phone_admin'   => $this->request->getPost('phone'),
-                'email_admin'   => $this->request->getPost('email'),
                 'alamat'        => $this->request->getPost('address'),
                 'password'      => password_hash($this->request->getPost('password'), PASSWORD_BCRYPT),
                 'status'        => $this->request->getPost('status'),
@@ -222,22 +218,22 @@ class LoginController extends ResourceController
         return $this->response->setJSON($response);
     }
     
-    private function setUserSession($email)
+    private function setUserSession($username)
     {
         // Get user data from the database based on the username
         $adminModel = new AdminModel();
-        $data = $adminModel->where('email_admin', $email)->first();
+        $data = $adminModel->where('username', $username)->first();
 
         // Set user session
         $authSession = new SessionController();
         $authSession->authorised($data);
     }
     
-    private function validateCredentials($email, $password)
+    private function validateCredentials($username, $password)
     {
         // Use your user model to check if the credentials are valid
         $adminModel = new AdminModel();
-        $admin = $adminModel->where('email_admin', $email)->first();
+        $admin = $adminModel->where('username', $username)->first();
         
         if ($admin && password_verify($password, $admin['password'])) {
             // Valid credentials

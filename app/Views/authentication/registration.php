@@ -69,10 +69,14 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-floating form-floating-outline">
-                                            <input type="email" name="multiStepsEmail" id="multiStepsEmail"
-                                                class="form-control" placeholder="emailkamu@email.com"
-                                                autocomplete="off" />
-                                            <label for="multiStepsEmail">Email</label>
+                                            <select id="selectStatus" name="selectStatus" class="select2 form-select"
+                                                data-allow-clear="true">
+                                                <option value="">Status</option>
+                                                <option value="Master Admin">Master Admin</option>
+                                                <option value="Admin">Admin</option>
+                                                <option value="User">Kader Posyandu</option>
+                                            </select>
+                                            <label for="selectStatus">Status Izin Akses</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 form-password-toggle">
@@ -129,8 +133,8 @@
                             <!-- Personal Info -->
                             <div id="personalInfoValidation" class="content">
                                 <div class="content-header mb-3">
-                                    <h4 class="mb-0">Informasi Personal</h4>
-                                    <small>Masukkan Informasi Personal Kamu</small>
+                                    <h4 class="mb-0">Informasi Personal dan Alamat Posyandu</h4>
+                                    <small>Silahkan Lengkapi Form Dibawah Ini.</small>
                                 </div>
                                 <div class="row g-3">
                                     <div class="col-sm-6">
@@ -149,18 +153,7 @@
                                             <label for="multiStepsLastName">Nama Akhir</label>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="input-group input-group-merge">
-                                            <span class="input-group-text">ID (+62)</span>
-                                            <div class="form-floating form-floating-outline">
-                                                <input type="text" id="multiStepsMobile" name="multiStepsMobile"
-                                                    class="form-control multi-steps-mobile"
-                                                    placeholder="+62 814 9887 3032" autocomplete="off" />
-                                                <label for="multiStepsMobile">Nomor Telepon</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <div class="form-floating form-floating-outline">
                                             <select id="selectCity" class="select2 form-select" name="selectCity"
                                                 data-allow-clear="true">
@@ -179,7 +172,7 @@
 
                                                 ?>
                                             </select>
-                                            <label for="selectCity">Asal Kota</label>
+                                            <label for="selectCity">Asal Kota Posyandu</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 header-kecamatan">
@@ -198,19 +191,7 @@
                                         <div class="form-floating form-floating-outline">
                                             <input type="text" id="multiStepsAddress" name="multiStepsAddress"
                                                 class="form-control" placeholder="Address" autocomplete="off" />
-                                            <label for="multiStepsAddress">Alamat Lengkap Anda</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-floating form-floating-outline">
-                                            <select id="selectStatus" name="selectStatus" class="select2 form-select"
-                                                data-allow-clear="true">
-                                                <option value="">Status</option>
-                                                <option value="Master Admin">Master Admin</option>
-                                                <option value="Admin">Admin</option>
-                                                <option value="User">Kader Posyandu</option>
-                                            </select>
-                                            <label for="selectStatus">Status Izin Akses</label>
+                                            <label for="multiStepsAddress">Alamat Lengkap Posyandu</label>
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-between">

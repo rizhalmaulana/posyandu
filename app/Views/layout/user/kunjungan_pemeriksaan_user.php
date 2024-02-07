@@ -107,77 +107,98 @@
                         </div>
                         <div class="help-center-popular-articles py-5">
                             <div class="container-xl">
-                                <h5 class="text-center my-4">Pilih dan Lengkapi Pemantauan Dibawah Ini Sesuai Umur
-                                    Bayi/Balita</h5>
+                                <h5 class="text-center my-4">Pilih dan Lengkapi Pemantauan Dibawah Ini Sesuai Umur Bayi/Balita</h5>
                                 <div class="row mb-2">
                                     <div class="col-lg-12">
                                         <div class="row">
                                             <?php
                                                 for ($i = 0; $i < $jumlah_pertanyaan; $i++) {
+                                                    $number = $i + 1;
+
                                                     if (isset($data_jawaban) && !empty($data_jawaban)) {
                                                         if ($data_jawaban[$i]['status_jawaban'] == "Tidak Lengkap") {
-                                                            ?>
-                                                                <div class="col-md-4 mb-md-0 mt-4 mb-4">
-                                                                    <div class="card border shadow-none">
-                                                                        <span class="position-absolute top-0 start-100 translate-middle badge bg-danger text-white"><?= $data_jawaban[$i]['total_pertanyaan_belum_dijawab']; ?></span>
-                                                                        <div class="card-body text-center">
-                                                                            <img class="mb-3" src="<?= base_url('assets/img/icons/unicons/baby-grow.png') ?>" height="60" alt="Help center landing" />
-                                                                            <h5><?= $master_pertanyaan[$i]['judul_pertanyaan']; ?></h5>
-                                                                            <span class="btn btn-label-danger"><?= $data_jawaban[$i]['status_jawaban']; ?></span>
-                                                                            <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#modalPertanyaan<?= $i; ?>">Pantau Perkembangan</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            <?php
-                                                        } else if ($data_jawaban[$i]['status_jawaban'] == "Belum Diisi") {
-                                                            if ($data_jawaban[$i]['status_akses'] == "primary") {
-                                                                ?>
-                                                                <div class="col-md-4 mb-md-0 mt-4 mb-4">
-                                                                    <div class="card border shadow-none">
-                                                                        <span class="position-absolute top-0 start-100 translate-middle badge bg-danger text-white"><?= $data_jawaban[$i]['total_pertanyaan_belum_dijawab']; ?></span>
-                                                                        <div class="card-body text-center">
-                                                                            <img class="mb-3" src="<?= base_url('assets/img/icons/unicons/baby-grow.png') ?>" height="60" alt="Help center landing" />
-                                                                            <h5><?= $master_pertanyaan[$i]['judul_pertanyaan']; ?></h5>
-                                                                            <span class="btn btn-label-danger"><?= $data_jawaban[$i]['status_jawaban']; ?></span>
-                                                                            <button type="button" class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#modalPertanyaan<?= $i; ?>">Pantau Perkembangan</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <?php
-                                                            } else {
-                                                                ?>
-                                                                <div class="col-md-4 mb-md-0 mt-4 mb-4">
-                                                                    <div class="card border shadow-none">
-                                                                        <span class="position-absolute top-0 start-100 translate-middle badge bg-secondary text-white"><?= $data_jawaban[$i]['total_pertanyaan_belum_dijawab']; ?></span>
-                                                                        <div class="card-body text-center">
-                                                                            <img class="mb-3" src="<?= base_url('assets/img/icons/unicons/baby-grow.png') ?>" height="60" alt="Help center landing" />
-                                                                            <h5><?= $master_pertanyaan[$i]['judul_pertanyaan']; ?></h5>
-                                                                            <span class="btn btn-label-secondary"><?= $data_jawaban[$i]['status_jawaban']; ?></span>
-                                                                            <button type="button" class="btn btn-outline-secondary mt-3" data-bs-toggle="modal" data-bs-target="#modalScrollableDisabled">Pantau Perkembangan</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <?php
-                                                            }
-                                                        } else {
-                                                            ?>
-                                                            <div class="col-md-4 mb-md-0 mt-4 mb-4">
-                                                                <div class="card border shadow-none">
-                                                                    <span class="position-absolute top-0 start-100 translate-middle badge bg-success text-white"><?= $data_jawaban[$i]['total_pertanyaan_belum_dijawab']; ?></span>
-                                                                    <div class="card-body text-center">
-                                                                        <img class="mb-3" src="<?= base_url('assets/img/icons/unicons/baby-grow.png') ?>" height="60" alt="Help center landing" />
-                                                                        <h5><?= $master_pertanyaan[$i]['judul_pertanyaan']; ?></h5>
-                                                                        <span class="btn btn-label-success"><?= $data_jawaban[$i]['status_jawaban']; ?></span>
-                                                                        <button type="button" class="btn btn-outline-success mt-3" data-bs-toggle="modal" data-bs-target="#modalScrollableDisabled">Pantau Perkembangan</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <?php
-                                                        }
-                                                    } else {
-
+                                            ?>
+                                            <div class="col-md-4 mb-md-0 mt-4 mb-4">
+                                                <div class="card border shadow-none">
+                                                    <span class="position-absolute top-0 start-100 translate-middle badge bg-danger text-white"><?= $data_jawaban[$i]['total_pertanyaan_belum_dijawab']; ?></span>
+                                                    <div class="card-body text-center">
+                                                        <img class="mb-3"
+                                                            src="<?= base_url('assets/img/icons/unicons/baby-grow.png') ?>"
+                                                            height="60" alt="Help center landing" />
+                                                        <h5><?= $master_pertanyaan[$i]['judul_pertanyaan']; ?></h5>
+                                                        <span
+                                                            class="btn btn-label-warning"><?= $data_jawaban[$i]['status_jawaban']; ?></span>
+                                                        <button type="button" class="btn btn-outline-primary mt-3"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modalPertanyaan<?= $number; ?>">Pantau Perkembangan</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                                } else if ($data_jawaban[$i]['status_jawaban'] == "Belum Diisi") {
+                                                    if ($data_jawaban[$i]['status_akses'] == "primary") {
+                                            ?>
+                                            <div class="col-md-4 mb-md-0 mt-4 mb-4">
+                                                <div class="card border shadow-none">
+                                                    <span
+                                                        class="position-absolute top-0 start-100 translate-middle badge bg-danger text-white"><?= $data_jawaban[$i]['total_pertanyaan_belum_dijawab']; ?></span>
+                                                    <div class="card-body text-center">
+                                                        <img class="mb-3"
+                                                            src="<?= base_url('assets/img/icons/unicons/baby-grow.png') ?>"
+                                                            height="60" alt="Help center landing" />
+                                                        <h5><?= $master_pertanyaan[$i]['judul_pertanyaan']; ?></h5>
+                                                        <span
+                                                            class="btn btn-label-danger"><?= $data_jawaban[$i]['status_jawaban']; ?></span>
+                                                        <button type="button" class="btn btn-outline-primary mt-3"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modalPertanyaan<?= $number; ?>">Pantau Perkembangan</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                                } else {
+                                            ?>
+                                            <div class="col-md-4 mb-md-0 mt-4 mb-4">
+                                                <div class="card border shadow-none">
+                                                    <span
+                                                        class="position-absolute top-0 start-100 translate-middle badge bg-secondary text-white"><?= $data_jawaban[$i]['total_pertanyaan_belum_dijawab']; ?></span>
+                                                    <div class="card-body text-center">
+                                                        <img class="mb-3"
+                                                            src="<?= base_url('assets/img/icons/unicons/baby-grow.png') ?>"
+                                                            height="60" alt="Help center landing" />
+                                                        <h5><?= $master_pertanyaan[$i]['judul_pertanyaan']; ?></h5>
+                                                        <span
+                                                            class="btn btn-label-secondary"><?= $data_jawaban[$i]['status_jawaban']; ?></span>
+                                                        <button type="button" class="btn btn-outline-secondary mt-3"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modalScrollableDisabled">Pantau Perkembangan</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                                    }
+                                                } else {
+                                            ?>
+                                            <div class="col-md-4 mb-md-0 mt-4 mb-4">
+                                                <div class="card border shadow-none">
+                                                    <span
+                                                        class="position-absolute top-0 start-100 translate-middle badge bg-success text-white"><?= $data_jawaban[$i]['total_pertanyaan_belum_dijawab']; ?></span>
+                                                    <div class="card-body text-center">
+                                                        <img class="mb-3"
+                                                            src="<?= base_url('assets/img/icons/unicons/baby-grow.png') ?>"
+                                                            height="60" alt="Help center landing" />
+                                                        <h5><?= $master_pertanyaan[$i]['judul_pertanyaan']; ?></h5>
+                                                        <span class="btn btn-lg btn-label-success"><?= $data_jawaban[$i]['status_jawaban']; ?></span>
+                                                        <button type="button" class="btn btn-outline-success mt-3"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modalScrollableSuccess">Pantau Perkembangan</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
                                                     }
                                                 }
+                                            }
                                             ?>
                                         </div>
                                     </div>
@@ -439,76 +460,87 @@
             <?= form_close() ?>
         </div>
 
+        <!-- Modal -->
         <?php 
-            $totalPertanyaan = 9;
-            for ($i = 0; $i < $totalPertanyaan; $i++) {
-                ?> 
-                <!-- Modal -->
-                <div class="modal fade" id="modalPertanyaan<?= $i; ?>" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-                    <div class="modal-dialog modal-dialog-scrollable" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h7 class="modal-title" id="modalScrollableTitle">Lakukan pemantauan perkembangan dengan ceklis dibawah ini. Centang "Iya" atau "Tidak" sesuai perkembangan bayi anda.</h7>
-                            </div>
-                            <hr></hr>
-                            <div class="modal-body">
-                                <form id="inputForm0">
-                                    <div class="row">
-                                        <input type="text" value="<?= $master_pertanyaan[$i]['total_pertanyaan'] ?>" id="total_pertanyaan" hidden>
-                                        <input type="text" value="<?= $data_balita->id; ?>" id="id_balita" hidden>
-                                        <?php
-                                            if (isset($data_pertanyaan) && !empty($data_pertanyaan)) {
-                                                foreach ($data_pertanyaan['pertanyaan'] as $index => $value) {
-                                                    $number = $index + 1;
+            for ($i = 0; $i < $jumlah_pertanyaan; $i++) {
+        ?>
+        <div class="modal fade" id="modalPertanyaan<?= $i; ?>" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h7 class="modal-title" id="modalScrollableTitle">Lakukan pemantauan perkembangan dengan ceklis
+                            dibawah ini. Centang "Iya" atau "Tidak" sesuai perkembangan bayi anda.</h7>
+                    </div>
+                    <hr>
+                    </hr>
+                    <div class="modal-body">
+                        <form id="inputForm0">
+                            <div class="row">
+                                <input type="text" value="<?= $master_pertanyaan[$i]['total_pertanyaan'] ?>" id="total_pertanyaan" hidden>
+                                <input type="text" value="<?= $data_balita->id; ?>" id="id_balita" hidden>
+                                <?php
+                                    if (isset($data_pertanyaan['pertanyaan']) && !empty($data_pertanyaan['pertanyaan'])) {
+                                        $string = 'master_pertanyaan' . $i;
 
-                                                    if ($data_jawaban[$index]['list_jawaban'][$index]['jawaban'] == '1') {
-                                                        $checked = "checked";
-                                                        $checkedtidak = "";
-                                                    } else {
-                                                        $checkedtidak = "checked";
-                                                        $checked = "";
+                                        if (isset($data_pertanyaan['pertanyaan'][$string]) && !empty($data_pertanyaan['pertanyaan'][$string])) {
+                                            foreach ($data_pertanyaan['pertanyaan'][$string] as $index => $value) {
+                                                $number = $index + 1;
+                                                $decreaseIndex = $i - 1;
+
+                                                foreach ($data_jawaban[$decreaseIndex]['list_jawaban'] as $listJawaban) {
+                                                    if ($listJawaban['id_pertanyaan'] == $value['id']) {
+                                                        if ($listJawaban['jawaban'] == '1') {
+                                                            $checked = "checked";
+                                                            $checkedtidak = "";
+                                                        } else {
+                                                            $checkedtidak = "checked";
+                                                            $checked = "";
+                                                        }
                                                     }
-                                                    ?>
-                                                    <div class="col-lg-8 mt-3 mb-4">
-                                                        <p><?= $number ?>. <?= $value['pertanyaan'] ?></p>
-                                                        <input type="text" value="<?= $value['id']; ?>" name="id_pertanyaan<?= $number; ?>" hidden>
-                                                        <input type="text" value="<?= $value['id_master_pertanyaan']; ?>" name="id_master_pertanyaan<?= $number; ?>" hidden>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="col-md-12 mt-1 mb-2">
-                                                            <div class="form-check custom-option custom-option-basic">
-                                                                <label class="form-check-label custom-option-content">
-                                                                    <input class="form-check-input" name="pertanyaan<?= $number; ?>" type="radio" <?= $checked; ?> />
-                                                                    <span class="custom-option-header"><span class="h7 mb-0">Iya</span></span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12 mb-4">
-                                                            <div class="form-check custom-option custom-option-basic">
-                                                                <label class="form-check-label custom-option-content">
-                                                                    <input class="form-check-input" name="pertanyaan<?= $number; ?>" type="radio" <?= $checkedtidak; ?>/>
-                                                                    <span class="custom-option-header"><span class="h7 mb-0">Tidak</span></span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr></hr>
-                                                    <?php
                                                 }
+
+                                                ?>
+                                                <div class="col-lg-8 mt-3 mb-4">
+                                                    <p><?= $number ?>. <?= $value['pertanyaan'] ?></p>
+                                                    <input type="text" value="<?= $value['id']; ?>" name="id_pertanyaan<?= $number; ?>" hidden>
+                                                    <input type="text" value="<?= $value['id_master_pertanyaan']; ?>" name="id_master_pertanyaan<?= $number; ?>" hidden>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="col-md-12 mt-1 mb-2">
+                                                        <div class="form-check custom-option custom-option-basic">
+                                                            <label class="form-check-label custom-option-content">
+                                                                <input class="form-check-input" name="pertanyaan<?= $number; ?>" type="radio" <?= $checked; ?> />
+                                                                <span class="custom-option-header"><span class="h7 mb-0">Iya</span></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 mb-4">
+                                                        <div class="form-check custom-option custom-option-basic">
+                                                            <label class="form-check-label custom-option-content">
+                                                                <input class="form-check-input" name="pertanyaan<?= $number; ?>" type="radio" <?= $checkedtidak; ?>/>
+                                                                <span class="custom-option-header"><span class="h7 mb-0">Tidak</span></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr></hr>
+                                                <?php
                                             }
-                                        ?>
-                                    </div>
-                                </form>
+                                        }
+                                    }
+                                ?>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Tutup</button>
-                                <button type="button" class="btn btn-primary" id="saveChangesBtn<?= $i; ?>">Simpan Penilaian</button>
-                            </div>
-                        </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-primary" id="saveChangesBtn<?= $i; ?>">Simpan Penilaian</button>
                     </div>
                 </div>
-                <!-- Modal 0 -->
-                <?php
+            </div>
+        </div>
+        <!-- Modal 0 -->
+        <?php
             }
         ?>
 
@@ -523,7 +555,30 @@
                     <div class="modal-body">
                         <div class="row">
                             <p>
-                                Umur bayi belum cukup untuk mengisi penilaian ini, atau perkembangan di bulan sebelumnya belum "Lengkap". 
+                                Umur bayi belum cukup untuk mengisi penilaian ini, atau perkembangan di bulan sebelumnya
+                                belum "Lengkap".
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Mengerti</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Success -->
+        <div class="modal fade" id="modalScrollableSuccess" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalScrollableTitle">Pertanyaan Sudah Lengkap!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <p>
+                                Penilaian atau perkembangan pada tahap ini sudah "Lengkap", silahkan lengkapi penilaian selanjutnya.
                             </p>
                         </div>
                     </div>
