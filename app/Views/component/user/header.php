@@ -13,7 +13,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="<?= base_url('assets/img/favicon/favicon.ico'); ?>" />
+    <link rel="icon" type="image/x-icon" href="<?= base_url('assets/img/custom/icons-mommy-and-me.png') ?>" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css'); ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/apex-charts/apex-charts.css'); ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/swiper/swiper.css'); ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/sweetalert2/sweetalert2.css'); ?>" />
 
     <!-- Page CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/vendor/css/pages/cards-statistics.css'); ?>" />
@@ -49,9 +50,6 @@
     <!-- Helpers -->
     <script src="<?= base_url('assets/vendor/js/helpers.js'); ?>"></script>
 
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
-    <script src="<?= base_url('assets/vendor/js/template-customizer.js'); ?>"></script>
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="<?= base_url('assets/js/config.js'); ?>"></script>
 
@@ -91,17 +89,8 @@
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
 
-                            <!-- Style Switcher -->
-                            <li class="nav-item me-1 me-xl-0">
-                                <a class="nav-link btn btn-text-secondary rounded-pill btn-icon style-switcher-toggle hide-arrow"
-                                    href="javascript:void(0);">
-                                    <i class="mdi mdi-24px"></i>
-                                </a>
-                            </li>
-                            <!--/ Style Switcher -->
-
                             <!-- Notification -->
-                            <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-2 me-xl-1">
+                            <!-- <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-2 me-xl-1">
                                 <a class="nav-link btn btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow"
                                     href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside"
                                     aria-expanded="false">
@@ -147,7 +136,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> -->
                             <!--/ Notification -->
 
                             <!-- User -->
@@ -183,12 +172,6 @@
                                         <a class="dropdown-item" href="pages-profile-user.html">
                                             <i class="mdi mdi-account-outline me-2"></i>
                                             <span class="align-middle">Profil Ku</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="pages-account-settings-account.html">
-                                            <i class="mdi mdi-cog-outline me-2"></i>
-                                            <span class="align-middle">Pengaturan</span>
                                         </a>
                                     </li>
                                     <li>
@@ -278,13 +261,13 @@
                                             </a>
                                             <ul class="menu-sub">
                                                 <li class="menu-item" <?= $active_submenu_databalita; ?>>
-                                                    <a href="<?= base_url('dashboard/menu/data-balita'); ?>" class="menu-link">
+                                                    <a href="<?= base_url('dashboard/data-balita'); ?>" class="menu-link">
                                                         <i class="menu-icon tf-icons mdi mdi-circle-medium"></i>
                                                         <div data-i18n="Data Balita">Data Balita</div>
                                                     </a>
                                                 </li>
                                                 <li class="menu-item <?= $active_submenu_tambahbalita; ?>">
-                                                    <a href="<?= base_url('dashboard/menu/tambah-balita'); ?>" class="menu-link">
+                                                    <a href="<?= base_url('dashboard/tambah-balita'); ?>" class="menu-link">
                                                         <i class="menu-icon tf-icons mdi mdi-circle-medium"></i>
                                                         <div data-i18n="Tambah Balita">Tambah Balita</div>
                                                     </a>
@@ -298,7 +281,7 @@
                                             </a>
                                             <ul class="menu-sub">
                                                 <li class="menu-item" <?= $active_submenu_statusgizi; ?>>
-                                                    <a href="<?= base_url('dashboard/menu/rekap-pemeriksaan'); ?>" class="menu-link">
+                                                    <a href="<?= base_url('dashboard/rekap-pemeriksaan'); ?>" class="menu-link">
                                                         <i class="menu-icon tf-icons mdi mdi-circle-medium"></i>
                                                         <div data-i18n="Hasil Rekap Pemeriksaan">Hasil Rekap Pemeriksaan</div>
                                                     </a>

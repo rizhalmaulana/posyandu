@@ -13,7 +13,10 @@ class MasterDashboardController extends BaseController
         helper('form');
         
         $data = [
-            'title' => 'Master Dashboard | Posyandu Dashboard'
+            'title'                 => 'Master Dashboard | Tembang Santri',
+            'session'               => session()->get(),
+            'status_active_menu'    => 'dashboard',
+            'status_active_submenu' => 'monitoring'
         ];
         
         echo view('component/master/header', $data);

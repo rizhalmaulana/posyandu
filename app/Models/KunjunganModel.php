@@ -6,6 +6,8 @@ use CodeIgniter\Model;
 
 class KunjunganModel extends Model
 {
+    protected $table1           = 'tbl_balita';
+
     protected $table            = 'tbl_kunjungan';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
@@ -28,22 +30,62 @@ class KunjunganModel extends Model
     }
 
     public function getTotalDataKunjunganByMonth() {
-        date_default_timezone_set('Asia/Jakarta');
-        $month_now = date('MMMM');
+        setlocale(LC_TIME, 'id_ID.utf8'); // Set the locale to Indonesian
+        $currentMonthName = strftime('%B');
 
         return $this->db->table($this->table)
-                ->where('bulan_kunjungan', $month_now)
+                ->where('bulan_kunjungan', $currentMonthName)
                 ->countAllResults();
     }
 
-    public function getRiwayatPerTahun($year) {
-        $result = $this->db->table($this->table)
-            ->select('MONTH(tgl_kunjungan) as month, COUNT(id_balita) as total_visits')
-            ->where('YEAR(tgl_kunjungan)', $year)
-            ->groupBy('MONTH(tgl_kunjungan)')
-            ->get();
-        // Use the $result array as needed
-        return $result->getResultArray();
+    public function getTotalKunjunganPerMonthOfYear($year) {
+        // Initialize the result array
+        $result = [];
+
+        // Query data for the specified year
+        $query = $this->db->query("
+            SELECT
+                MONTH(tgl_kunjungan) AS month,
+                COUNT(*) AS total_visits
+            FROM
+                $this->table
+            WHERE
+                tahun_kunjungan = ?
+            GROUP BY
+                MONTH(tgl_kunjungan)
+            ORDER BY
+                MONTH(tgl_kunjungan)
+        ", [$year]);
+
+        // Format the result
+        foreach ($query->getResult() as $row) {
+            $month = intval($row->month);
+            $totalVisits = intval($row->total_visits);
+            $result[$month] = $totalVisits;
+        }
+
+        // Fill in missing months with zero visits
+        for ($i = 1; $i <= 12; $i++) {
+            if (!isset($result[$i])) {
+                $result[$i] = 0;
+            }
+        }
+
+        // Sort the result array by month
+        ksort($result);
+
+        return $result;
+    }
+
+    public function getRiwayatKunjunganBalita($idBalita = "") {
+        $query = $this->db->table($this->table)
+                ->select('tbl_kunjungan.id as id, tbl_kunjungan.tgl_kunjungan as tanggal_kunjungan, tbl_kunjungan.status_kunjungan as status_kunjungan,
+                tbl_balita.nama_lengkap as nama_balita')
+                ->join($this->table1, "{$this->table}.id_balita = {$this->table1}.id")
+                ->where("{$this->table}.id_balita", $idBalita)
+                ->get();
+
+        return $query->getResultArray();
     }
 
 }

@@ -14,7 +14,6 @@
                                 <th>Jenis Kelamin</th>
                                 <th>Tanggal Lahir</th>
                                 <th>Posyandu</th>
-                                <th>Orang Tua</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -25,7 +24,6 @@
                                 <th>Jenis Kelamin</th>
                                 <th>Tanggal Lahir</th>
                                 <th>Posyandu</th>
-                                <th>Orang Tua</th>
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>

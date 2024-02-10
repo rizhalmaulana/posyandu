@@ -13,7 +13,7 @@ class AdminController extends BaseController
         helper('form');
         
         $data = [
-            'title' => 'Admin Dashboard | Posyandu Dashboard'
+            'title' => 'Admin Dashboard | Tembang Santri'
         ];
         
         echo view('component/admin/header', $data);

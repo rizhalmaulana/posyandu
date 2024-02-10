@@ -42,4 +42,26 @@ class JawabanPerkembanganModel extends Model
 
         return $query->getResultArray();
     }
+
+    public function checkIfJawabanExist($id_balita, $id_pertanyaan) {
+        // Check if the data exists
+        $query = $this->db->table($this->table)
+                ->where('id_balita', $id_balita)
+                ->where('id_pertanyaan', $id_pertanyaan)
+                ->get();
+
+        return $query->getRow();
+    }
+
+    public function updatedData($id_balita, $id_pertanyaan, $data) {
+        // Filter the data to remove any non-existent fields in the table
+        $filteredData = array_intersect_key($data, array_flip($this->allowedFields));
+
+        // Update the record
+        return $this->db->table($this->table)
+                    ->where('id_balita', $id_balita)
+                    ->where('id_pertanyaan', $id_pertanyaan)
+                    ->set($filteredData)
+                    ->update();
+    }
 }

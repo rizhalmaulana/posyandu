@@ -99,8 +99,7 @@
                             </div>
                             <div class="card-info">
                                 <h5 class="mb-0">0 %</h5>
-                                <small class="text-muted">Presentase Kenaikan Berat Badan Anak sesuai
-                                    KBM (N)</small>
+                                <small class="text-muted">Persentase Kenaikan BB (N) Pada Bulan Kemarin</small>
                             </div>
                         </div>
                     </div>
@@ -129,37 +128,81 @@
                     <div class="col-lg-12 mt-4">
                         <div class="row g-4">
                             <?php 
+                            setlocale(LC_TIME, 'id_ID.utf8');
+                            $bulanSaatIni = strftime('%B');
+
                             if (isset($listBalita) && !empty($listBalita)):
-                                foreach($listBalita as $balita):
-                                    if ($balita['jenis_kelamin'] == "Laki-laki"): $textcolor = 'info';
-                                    else : $textcolor = 'danger';
-                                    endif;
-                                    ?><div class="col-lg-3">
-                                        <div class="card">
-                                            <div class="card-body text-center">
-                                                <div class="mx-auto mb-4">
-                                                    <img src="<?= base_url('assets/img/avatars/user.png'); ?>"
-                                                        alt="Avatar Image" class="rounded-circle w-px-100" />
+                                foreach($listBalita as $index => $balita):
+                                    if (isset($kunjunganBalita[$index]) && !empty($kunjunganBalita[$index])):
+                                        if ($kunjunganBalita[$index]['status_kunjungan'] == "Hadir" && $kunjunganBalita[$index]['bulan_kunjungan'] == $bulanSaatIni):
+                                            if ($balita['jenis_kelamin'] == "Laki-laki"): $textcolor = 'info';
+                                            else : $textcolor = 'primary';
+                                            endif;
+                                            ?><div class="col-lg-3">
+                                                <div class="card">
+                                                    <div class="card-body text-center">
+                                                        <div class="mx-auto mb-4">
+                                                            <img src="<?= base_url('assets/img/avatars/user.png'); ?>"
+                                                                alt="Avatar Image" class="rounded-circle w-px-100" />
+                                                        </div>
+                                                        <h5 class="mb-1 card-title"><?= $balita['nama_lengkap'] ?></h5>
+                                                        <span class="text-muted text-small"><?= $balita['tanggal_lahir'] ?></span>
+                                                        <div class="d-flex align-items-center justify-content-center my-4 gap-2">
+                                                            <a href="javascript:;" class="me-1"><span
+                                                                    class="badge bg-label-<?= $textcolor; ?> rounded-pill"><?= $balita['jenis_kelamin'] ?></span></a>
+                                                        </div>
+                                                        <div class="d-flex align-items-center justify-content-center">
+                                                            <button type="button" class="btn btn-secondary" id="info-balita-disable-kunjungan"><i class="mdi mdi-account-check-outline me-1"></i>Periksa</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <h5 class="mb-1 card-title"><?= $balita['nama_lengkap'] ?></h5>
-                                                <span class="text-muted text-small"><?= $balita['tanggal_lahir'] ?></span>
-                                                <div class="d-flex align-items-center justify-content-center my-4 gap-2">
-                                                    <a href="javascript:;" class="me-1"><span class="badge bg-label-<?= $textcolor; ?> rounded-pill"><?= $balita['jenis_kelamin'] ?></span></a>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-center">
-                                                    <a href="<?= base_url('dashboard/periksa/'. $balita['id']); ?>" id="btnPeriksaBalita" class="btn btn-primary d-flex align-items-center me-3">
-                                                        <i class="mdi mdi-account-check-outline me-1"></i>Periksa
-                                                    </a>
+                                            </div><?php
+                                        endif;
+                                    else:
+                                        if ($balita['jenis_kelamin'] == "Laki-laki"): $textcolor = 'info';
+                                        else : $textcolor = 'primary';
+                                        endif;
+                                        ?><div class="col-lg-3">
+                                            <div class="card">
+                                                <div class="card-body text-center">
+                                                    <div class="mx-auto mb-4">
+                                                        <img src="<?= base_url('assets/img/avatars/user.png'); ?>"
+                                                            alt="Avatar Image" class="rounded-circle w-px-100" />
+                                                    </div>
+                                                    <h5 class="mb-1 card-title"><?= $balita['nama_lengkap'] ?></h5>
+                                                    <span class="text-muted text-small"><?= $balita['tanggal_lahir'] ?></span>
+                                                    <div class="d-flex align-items-center justify-content-center my-4 gap-2">
+                                                        <a href="javascript:;" class="me-1"><span
+                                                                class="badge bg-label-<?= $textcolor; ?> rounded-pill"><?= $balita['jenis_kelamin'] ?></span></a>
+                                                    </div>
+                                                    <?php 
+                                                        if ($balita['status_balita'] == 'B') :
+                                                    ?>
+                                                    <div class="d-flex align-items-center justify-content-center">
+                                                        <button type="button" class="btn btn-primary" id="info-balita-pendaftar-baru" value="<?= $balita['id']; ?>"><i class="mdi mdi-account-check-outline me-1"></i>Periksa</button>
+                                                    </div>
+                                                    <?php
+                                                        else:
+                                                    ?>
+                                                    <div class="d-flex align-items-center justify-content-center">
+                                                        <a href="<?= base_url('dashboard/periksa/'. $balita['id']); ?>"
+                                                            id="btnPeriksaBalita"
+                                                            class="btn btn-primary d-flex align-items-center me-3">
+                                                            <i class="mdi mdi-account-check-outline me-1"></i>Periksa
+                                                        </a>
+                                                    </div>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div><?php
+                                        </div><?php
+                                    endif;
                                 endforeach;
                             else:
                                 ?><div class="col-xl-12 col-lg-6 col-md-6 misc-wrapper">
-                                    <h4 class="mb-2 mx-2">Belum ada data balita</h4>
-                                    <p class="mb-4 mx-2">Silahkan input terlebih dahulu! di menu <a href="<?= base_url('dashboard/menu/tambah-balita') ?>">Tambah Balita</a></p>
-                                </div><?php
+                                <h4 class="mb-2 mx-2">Belum ada data balita</h4>
+                                <p class="mb-4 mx-2">Silahkan input terlebih dahulu! di menu <a
+                                        href="<?= base_url('dashboard/tambah-balita') ?>">Tambah Balita</a></p>
+                            </div><?php
                             endif;
                         ?>
                         </div>

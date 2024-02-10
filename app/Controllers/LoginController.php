@@ -22,7 +22,7 @@ class LoginController extends ResourceController
         helper(['form']);
         
         $data = [
-            'title' => 'Login | Posyandu Dashboard'
+            'title' => 'Login | Tembang Santri'
         ];
         
         echo view('component/authentication/header', $data);
@@ -68,7 +68,7 @@ class LoginController extends ResourceController
         helper(['form']);
         
         $data = [
-            'title' => 'Registrasi Akun | Posyandu Dashboard'
+            'title' => 'Registrasi Akun | Tembang Santri'
         ];
         
         $kotaModel = new KotaModel();

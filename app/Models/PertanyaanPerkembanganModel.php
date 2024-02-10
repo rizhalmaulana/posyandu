@@ -26,4 +26,5 @@ class PertanyaanPerkembanganModel extends Model
 
         return $query->get()->getResultArray();
     }
+
 }

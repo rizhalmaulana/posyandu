@@ -20,6 +20,11 @@ class CreatePemeriksaanTable extends Migration
                 'unsigned' => true,
                 'constraint' => 5,
             ],
+            'id_posyandu' => [
+                'type' => 'INT',
+                'unsigned' => true,
+                'constraint' => 5,
+            ],
             'berat_badan_lahir' => [
                 'type' => 'DECIMAL',
                 'constraint' => '5,2',
@@ -27,10 +32,6 @@ class CreatePemeriksaanTable extends Migration
             'panjang_badan_lahir' => [
                 'type' => 'DECIMAL',
                 'constraint' => '5,2',
-            ],
-            'phone_ortu' => [
-                'type' => 'VARCHAR',
-                'constraint' => 15,
             ],
             'umur_bulan' => [
                 'type' => 'VARCHAR',
@@ -91,6 +92,10 @@ class CreatePemeriksaanTable extends Migration
                 'type' => 'ENUM',
                 'constraint' => ['Iya', 'Tidak'],
             ],
+            'status_skrining' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+            ],
             'asi_eksklusif' => [
                 'type' => 'ENUM',
                 'constraint' => ['Iya', 'Tidak'],
@@ -129,7 +134,8 @@ class CreatePemeriksaanTable extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('id_balita', 'tbl_balita', 'id'); // Assuming there's a 'posyandu' table
+        $this->forge->addForeignKey('id_balita', 'tbl_balita', 'id'); // Assuming there's a 'Balita' table
+        $this->forge->addForeignKey('id_posyandu', 'tbl_posyandu', 'id'); // Assuming there's a 'posyandu' table
         $this->forge->createTable('tbl_pemeriksaan');
     }
 
