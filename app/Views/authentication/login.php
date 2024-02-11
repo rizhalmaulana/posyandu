@@ -28,9 +28,9 @@
                     <?php endif;?>
                     <form id="formAuthentication" class="mb-3" action="<?= base_url('login/process'); ?>" method="POST">
                         <div class="form-floating form-floating-outline mb-3">
-                            <input type="text" class="form-control" id="email" name="email"
-                                placeholder="Masukkan email anda" autofocus autocomplete="off" />
-                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="username" name="username"
+                                placeholder="Masukkan username anda" autofocus autocomplete="off" />
+                            <label for="username">Username</label>
                         </div>
                         <div class="mb-3">
                             <div class="form-password-toggle">

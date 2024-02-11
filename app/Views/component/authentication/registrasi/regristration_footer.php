@@ -81,7 +81,7 @@
                 }));
             });
 
-            $('.form-select-kecamatan').append('<label for="selectKecamatan">Asal Kecamatan</label>');
+            $('.form-select-kecamatan').append('<label for="selectKecamatan">Asal Kecamatan Posyandu</label>');
             // Append the select element to the result container
             $('.form-select-kecamatan').append(select);
             $('.header-kecamatan').show();
@@ -138,7 +138,7 @@
                 }));
             });
 
-            $('.form-select-kelurahan').append('<label for="selectKelurahan">Asal Kelurahan</label>');
+            $('.form-select-kelurahan').append('<label for="selectKelurahan">Asal Kelurahan Posyandu</label>');
             // Append the select element to the result container
             $('.form-select-kelurahan').append(select);
             $('.header-kelurahan').show();

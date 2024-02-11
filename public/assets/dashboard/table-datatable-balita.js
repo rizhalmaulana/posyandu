@@ -36,7 +36,7 @@
     if (dt_responsive_table.length) {
         var dt_responsive = dt_responsive_table.DataTable({
             ajax: {
-                url: `/dashboard/menu/data-balita`
+                url: `/dashboard/data-balita`
             },
             columns: [
                 { data: '' },
@@ -44,7 +44,6 @@
                 { data: 'jenis_kelamin' },
                 { data: 'tanggal_lahir' },
                 { data: 'nama_posyandu' },
-                { data: 'nama_ayah' },
                 { data: '' },
             ],
             columnDefs: [
@@ -65,9 +64,9 @@
                     orderable: false,
                     render: function (data, type, full, meta) {
                         return (
-                            '<span class="text-nowrap"><button class="btn btn-sm btn-icon btn-text-secondary rounded-pill btn-icon me-2 editDataBalita" data-id="'+full["id"]+'"><i class="mdi mdi-pencil-outline mdi-20px"></i></button>' +
-                            '<button class="btn btn-sm btn-icon btn-text-secondary rounded-pill btn-icon me-2 viewDataBalita" data-id="'+full["id"]+'"><i class="mdi mdi-eye-outline mdi-20px"></i></button>' +
-                            '<button class="btn btn-sm btn-icon btn-text-secondary rounded-pill btn-icon deleteDataBalita" data-id="'+full["id"]+'"><i class="mdi mdi-delete-outline mdi-20px"></i></button></span>'
+                            '<span class="text-nowrap"><button class="btn btn-sm btn-icon btn-text-secondary rounded-pill btn-icon me-2 ubahDataBalita" data-id="'+full["id"]+'"><i class="mdi mdi-pencil-outline mdi-20px"></i></button>' +
+                            '<button class="btn btn-sm btn-icon btn-text-secondary rounded-pill btn-icon me-2 lihatDataKMSBalita" data-id="'+full["id"]+'"><i class="mdi mdi-eye-outline mdi-20px"></i></button>' +
+                            '<button class="btn btn-sm btn-icon btn-text-secondary rounded-pill btn-icon hapusDataBalita" data-id="'+full["id"]+'"><i class="mdi mdi-delete-outline mdi-20px"></i></button></span>'
                         );
                     },
                 },
@@ -111,22 +110,20 @@
     }
 
     if (dt_kunjungan_table.length) {
-        // Get the path of the current URL
         var path = window.location.pathname;
 
-        // Split the path into segments using '/'
+        // Memisahkan jalur URL menjadi segmen
         var segments = path.split('/');
+        var idBalita = segments[3];
 
-        // Remove the first empty element (resulting from the leading '/')
-        segments.shift();
-        
-        var dt_responsive = dt_kunjungan_table.DataTable({
+        var dt_responsive = dt_responsive_table.DataTable({
             ajax: {
-                url: `/dashboard/periksa/`+ segments[2]
+                url: `/dashboard/get-riwayat-kunjungan`. idBalita
             },
             columns: [
                 { data: '' },
-                { data: 'tgl_kunjungan' },
+                { data: 'nama_balita' },
+                { data: 'tanggal_kunjungan' },
                 { data: 'status_kunjungan' },
                 { data: '' },
             ],
@@ -140,20 +137,6 @@
                         return '';
                     }
                 },
-                {
-                    // Actions
-                    targets: -1,
-                    searchable: false,
-                    title: "Aksi",
-                    orderable: false,
-                    render: function (data, type, full, meta) {
-                        return (
-                            '<span class="text-nowrap"><button class="btn btn-sm btn-icon btn-text-secondary rounded-pill btn-icon me-2 editDataBalita" data-id="'+full["id"]+'"><i class="mdi mdi-pencil-outline mdi-20px"></i></button>' +
-                            '<button class="btn btn-sm btn-icon btn-text-secondary rounded-pill btn-icon me-2 viewDataBalita" data-id="'+full["id"]+'"><i class="mdi mdi-eye-outline mdi-20px"></i></button>' +
-                            '<button class="btn btn-sm btn-icon btn-text-secondary rounded-pill btn-icon deleteDataBalita" data-id="'+full["id"]+'"><i class="mdi mdi-delete-outline mdi-20px"></i></button></span>'
-                        );
-                    },
-                },
             ],
             // scrollX: true,
             destroy: true,
@@ -163,7 +146,7 @@
                     display: $.fn.dataTable.Responsive.display.modal({
                         header: function (row) {
                             var data = row.data();
-                            return 'Details of ' + data['nama_lengkap'];
+                            return 'Details of ' + data['nama_balita'];
                         }
                     }),
                     type: 'column',
@@ -192,4 +175,21 @@
             }
         });
     }
+
+    //show ubah data balita
+    $("body").on("click", ".ubahDataBalita", function () {
+        var id = $(this).data("id");
+        window.location.href = '/dashboard/ubah-balita/' + id;
+    });
+
+    //show ubah data balita
+    $("body").on("click", ".lihatDataKMSBalita", function () {
+        var id = $(this).data("id");
+        window.location.href = '/dashboard/data-kms-balita/' + id;
+    });
+
+    $("body").on("click", ".hapusDataBalita", function () {
+        var id = $(this).data("id");
+        window.location.href = '/dashboard/hapus-balita/' + id;
+    });
 })();

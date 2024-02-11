@@ -11,6 +11,7 @@ use App\Models\BalitaModel;
 
 class PerkembanganController extends BaseController
 {
+
     public function show_pertanyaan($id_balita ='null') {
         $pertanyaanPerkembanganModel = new PertanyaanPerkembanganModel();
         $balita = new BalitaModel();
@@ -29,34 +30,113 @@ class PerkembanganController extends BaseController
         $selisih = $tglLahir->diff($tglHariIni);
         
         // Ambil nilai umur dalam format yang diinginkan
+        $umurHari = $selisih->days;
         $umurBulan = $selisih->y * 12 + $selisih->m;
         $umurTahun = $selisih->y;
         
-        if ($umurBulan <= 3 && $umurTahun <= 0) {
-            $range = '29 Hari - 3 Bulan';
-        } else if ($umurBulan > 3 || $umurBulan <= 6 && $umurTahun <= 0) {
-            $range = '3 - 6 Bulan';
-        } else if ($umurBulan > 6 || $umurBulan <= 9 && $umurTahun <= 0) {
-            $range = '6 - 9 Bulan';            
-        } else if ($umurBulan > 9 || $umurBulan <= 12) {
-            $range = '9 - 12 Bulan';            
-        } else if ($umurBulan > 12 || $umurBulan <= 18 && $umurTahun == 1) {
-            $range = '12 - 18 Bulan';               
-        } else if ($umurBulan > 18 || $umurBulan <= 24 && $umurTahun >= 1 || $umurTahun <= 2) {
-            $range = '18 - 24 Bulan';
-        } else if ($umurTahun >= 2 || $umurTahun <= 3) {
-            $range = '2 - 3 Tahun';
-        } else if ($umurTahun >= 3 || $umurTahun <= 4) {
-            $range = '3 - 4 Tahun';
-        } else if ($umurTahun >= 4 || $umurTahun <= 5) {
-            $range = '4 -5 Tahun';
+        if ($umurHari <= 91 && $umurBulan <= 3 && $umurTahun <= 0) {
+            $fieldValuePairs = [
+                ['field' => 'range_usia', 'value' => '29 Hari - 3 Bulan'],
+            ];
+            
+        } else if ($umurHari <= 182 && $umurBulan > 3 || $umurBulan <= 6 && $umurTahun <= 0) {
+            $fieldValuePairs = [
+                ['field' => 'range_usia', 'value' => '29 Hari - 3 Bulan'],
+                ['field' => 'range_usia', 'value' => '3 - 6 Bulan'],
+            ];
+        } else if ($umurHari <= 273 && $umurBulan > 6 || $umurBulan <= 9 && $umurTahun <= 0) {
+            $fieldValuePairs = [
+                ['field' => 'range_usia', 'value' => '29 Hari - 3 Bulan'],
+                ['field' => 'range_usia', 'value' => '3 - 6 Bulan'],
+                ['field' => 'range_usia', 'value' => '6 - 9 Bulan'],
+            ];
+        } else if ($umurHari <= 365 && $umurBulan > 9 || $umurBulan <= 12) {
+            $fieldValuePairs = [
+                ['field' => 'range_usia', 'value' => '29 Hari - 3 Bulan'],
+                ['field' => 'range_usia', 'value' => '3 - 6 Bulan'],
+                ['field' => 'range_usia', 'value' => '6 - 9 Bulan'],
+                ['field' => 'range_usia', 'value' => '9 - 12 Bulan'],
+            ];
+        } else if ($umurHari <= 547 && $umurBulan > 12 || $umurBulan <= 18 && $umurTahun == 1) {
+            $fieldValuePairs = [
+                ['field' => 'range_usia', 'value' => '29 Hari - 3 Bulan'],
+                ['field' => 'range_usia', 'value' => '3 - 6 Bulan'],
+                ['field' => 'range_usia', 'value' => '6 - 9 Bulan'],
+                ['field' => 'range_usia', 'value' => '9 - 12 Bulan'],
+                ['field' => 'range_usia', 'value' => '12 - 18 Bulan'],
+            ];
+        } else if ($umurHari <= 730 && $umurBulan > 18 || $umurBulan <= 24 && $umurTahun >= 1 || $umurTahun <= 2) {
+            $fieldValuePairs = [
+                ['field' => 'range_usia', 'value' => '29 Hari - 3 Bulan'],
+                ['field' => 'range_usia', 'value' => '3 - 6 Bulan'],
+                ['field' => 'range_usia', 'value' => '6 - 9 Bulan'],
+                ['field' => 'range_usia', 'value' => '9 - 12 Bulan'],
+                ['field' => 'range_usia', 'value' => '12 - 18 Bulan'],
+                ['field' => 'range_usia', 'value' => '18 - 24 Bulan'],
+            ];
+        } else if ($umurHari >= 730 && $umurBulan >= 24 && $umurTahun >= 2 || $umurHari <= 1095 && $umurBulan <= 36 && $umurTahun <= 3) {
+            $fieldValuePairs = [
+                ['field' => 'range_usia', 'value' => '29 Hari - 3 Bulan'],
+                ['field' => 'range_usia', 'value' => '3 - 6 Bulan'],
+                ['field' => 'range_usia', 'value' => '6 - 9 Bulan'],
+                ['field' => 'range_usia', 'value' => '9 - 12 Bulan'],
+                ['field' => 'range_usia', 'value' => '12 - 18 Bulan'],
+                ['field' => 'range_usia', 'value' => '18 - 24 Bulan'],
+                ['field' => 'range_usia', 'value' => '2 - 3 Tahun'],
+            ];
+        } else if ($umurHari >= 1095 && $umurBulan >= 36 && $umurTahun >= 3 || $umurHari <= 1460 && $umurBulan <= 48 && $umurTahun <= 4) {
+            $fieldValuePairs = [
+                ['field' => 'range_usia', 'value' => '29 Hari - 3 Bulan'],
+                ['field' => 'range_usia', 'value' => '3 - 6 Bulan'],
+                ['field' => 'range_usia', 'value' => '6 - 9 Bulan'],
+                ['field' => 'range_usia', 'value' => '9 - 12 Bulan'],
+                ['field' => 'range_usia', 'value' => '12 - 18 Bulan'],
+                ['field' => 'range_usia', 'value' => '18 - 24 Bulan'],
+                ['field' => 'range_usia', 'value' => '2 - 3 Tahun'],
+                ['field' => 'range_usia', 'value' => '3 - 4 Tahun'],
+            ];
+        } else if ($umurHari >= 1460 && $umurBulan >= 48 && $umurTahun >= 4 || $umurHari <= 1825 && $umurBulan <= 60 && $umurTahun <= 5) {
+            $fieldValuePairs = [
+                ['field' => 'range_usia', 'value' => '29 Hari - 3 Bulan'],
+                ['field' => 'range_usia', 'value' => '3 - 6 Bulan'],
+                ['field' => 'range_usia', 'value' => '6 - 9 Bulan'],
+                ['field' => 'range_usia', 'value' => '9 - 12 Bulan'],
+                ['field' => 'range_usia', 'value' => '12 - 18 Bulan'],
+                ['field' => 'range_usia', 'value' => '18 - 24 Bulan'],
+                ['field' => 'range_usia', 'value' => '2 - 3 Tahun'],
+                ['field' => 'range_usia', 'value' => '3 - 4 Tahun'],
+                ['field' => 'range_usia', 'value' => '4 - 5 Tahun'],
+            ];
         } else {
-            $range = '';
+            $fieldValuePairs = null;
         }
-        
+
+        $resultGetPertanyaan = $pertanyaanPerkembanganModel->getPertanyaanByRangeUsia($fieldValuePairs);
+        $groupedPertanyaanByIdMaster = [];
+
+        // Iterate over the response data
+        foreach ($resultGetPertanyaan as $item) {
+            $idMasterPertanyaan = 'master_pertanyaan' . $item['id_master_pertanyaan'];
+            
+            // Check if the key for the current id_master_pertanyaan exists in the grouped data
+            if (!array_key_exists($idMasterPertanyaan, $groupedPertanyaanByIdMaster)) {
+                // If not, initialize an empty array for that key
+                $groupedPertanyaanByIdMaster[$idMasterPertanyaan] = [];
+            }
+            
+            // Append the current item to the array corresponding to its id_master_pertanyaan
+            $groupedPertanyaanByIdMaster[$idMasterPertanyaan][] = $item;
+        }
+
+        // $result = ['result' => array_values($groupedPertanyaanByIdMaster)];
+
+        // $string = 'master_pertanyaan' . 2;
+        // print_r(json_encode($groupedPertanyaanByIdMaster[$string]));
+        // die;
+
         $data = [
             'success' => true,
-            'pertanyaan' => $pertanyaanPerkembanganModel->getPertanyaanByRangeUsia($range),
+            'pertanyaan' => $groupedPertanyaanByIdMaster,
         ];
         
         return $data;
@@ -101,15 +181,15 @@ class PerkembanganController extends BaseController
         $getTotalMasterPertanyaan8 = $masterPertanyaanModel->getTotalPertanyaanById(8);
         $getTotalMasterPertanyaan9 = $masterPertanyaanModel->getTotalPertanyaanById(9);
 
-        $getJawaban = $jawabanPerkembanganModel->getAllJawaban($id_balita);
-        $getJawaban2 = $jawabanPerkembanganModel->getAllJawaban($id_balita);
-        $getJawaban3 = $jawabanPerkembanganModel->getAllJawaban($id_balita);
-        $getJawaban4 = $jawabanPerkembanganModel->getAllJawaban($id_balita);
-        $getJawaban5 = $jawabanPerkembanganModel->getAllJawaban($id_balita);
-        $getJawaban6 = $jawabanPerkembanganModel->getAllJawaban($id_balita);
-        $getJawaban7 = $jawabanPerkembanganModel->getAllJawaban($id_balita);
-        $getJawaban8 = $jawabanPerkembanganModel->getAllJawaban($id_balita);
-        $getJawaban9 = $jawabanPerkembanganModel->getAllJawaban($id_balita);
+        $getJawaban = $jawabanPerkembanganModel->getAllJawaban($id_balita, 1);
+        $getJawaban2 = $jawabanPerkembanganModel->getAllJawaban($id_balita, 2);
+        $getJawaban3 = $jawabanPerkembanganModel->getAllJawaban($id_balita, 3);
+        $getJawaban4 = $jawabanPerkembanganModel->getAllJawaban($id_balita, 4);
+        $getJawaban5 = $jawabanPerkembanganModel->getAllJawaban($id_balita, 5);
+        $getJawaban6 = $jawabanPerkembanganModel->getAllJawaban($id_balita, 6);
+        $getJawaban7 = $jawabanPerkembanganModel->getAllJawaban($id_balita, 7);
+        $getJawaban8 = $jawabanPerkembanganModel->getAllJawaban($id_balita, 8);
+        $getJawaban9 = $jawabanPerkembanganModel->getAllJawaban($id_balita, 9);
         
         $statusAkses = "";
         $statusAkses2 = "";
@@ -120,6 +200,9 @@ class PerkembanganController extends BaseController
         $statusAkses7 = "";
         $statusAkses8 = "";
         $statusAkses9 = "";
+
+        // print_r(json_encode($getJawabanByIdBalita));
+        // die;
 
         if ($getJawabanByIdBalita->jawaban <= 0) {
             $totalJawaban = $getTotalMasterPertanyaan->total_pertanyaan - $getJawabanByIdBalita->jawaban;

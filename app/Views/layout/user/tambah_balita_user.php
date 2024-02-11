@@ -11,26 +11,6 @@
                     </div>
                     <?php endif;?>
                     <!-- Account -->
-                    <div class="card-body">
-                        <div class="d-flex align-items-start align-items-sm-center mt-2 gap-4">
-                            <img src="<?= base_url('assets/img/avatars/21.png') ?>" alt="user-avatar"
-                                class="d-block w-px-120 h-px-120 rounded" id="uploadedAvatar" />
-                            <div class="button-wrapper">
-                                <label for="upload" class="btn btn-primary me-2 mb-3" tabindex="0">
-                                    <span class="d-none d-sm-block">Unggah Foto</span>
-                                    <i class="mdi mdi-tray-arrow-up d-block d-sm-none"></i>
-                                    <input type="file" id="upload" class="account-file-input" hidden
-                                        accept="image/png, image/jpeg" />
-                                </label>
-                                <button type="button" class="btn btn-outline-secondary account-image-reset mb-3">
-                                    <i class="mdi mdi-reload d-block d-sm-none"></i>
-                                    <span class="d-none d-sm-block">Reset</span>
-                                </button>
-
-                                <div class="text-muted small">Unggah foto jika ada. Ekstensi JPG, JPEG atau PNG.</div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="card-body pt-2">
                         <?= form_open_multipart('#', ['id' => 'formTambahBalita', 'onSubmit' => 'return false']) ?>
                         <div class="row gy-4">
