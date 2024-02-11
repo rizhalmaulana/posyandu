@@ -71,6 +71,48 @@
     <script src="<?= base_url('assets/dashboard/sweetalert-ui.js'); ?>"></script>
     <script src="<?= base_url('assets/js/dashboards-ecommerce.js'); ?>"></script>
 
+    <!-- Downlaod PDF Konten -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var swiperSlides = document.querySelectorAll('#swiper-multiple-slides .swiper-slide');
+        swiperSlides.forEach(function(slide) {
+            slide.addEventListener('click', function() {
+                // Get PDF URL from data-pdf attribute
+                var pdfUrl = this.getAttribute('data-pdf');
+                var url = this.getAttribute('data-url');
+
+                if (pdfUrl != null) {
+                    // Trigger PDF download
+                    downloadPDF(pdfUrl);
+                } 
+                
+                if (url != null) {
+                    // Redirect user to the specified URL
+                    var link = document.createElement('a');
+                    link.href = url;
+                    link.target = '_blank';
+                    // Trigger click event on the dynamically created link
+                    link.click();
+                }
+            });
+        });
+
+        // Function to download PDF
+        function downloadPDF(pdfUrl) {
+            // Create temporary link element
+            var link = document.createElement('a');
+            link.href = pdfUrl;
+            link.target = '_blank';
+            link.download = 'file-downlaod-tembangsantri.pdf'; // You can customize the downloaded file name
+            // Append link to body and trigger click event
+            document.body.appendChild(link);
+            link.click();
+            // Remove link from body after download
+            document.body.removeChild(link);
+        }
+    });
+    </script>
+
     <!-- Modal Pertanyaan Perkembangan Usia 29 Hari - 3 Bulan -->
     <script>
         $(document).ready(function () {

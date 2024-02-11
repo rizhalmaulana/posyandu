@@ -5,37 +5,19 @@
         <div class="col-12 mb-4">
             <div class="swiper text-white" id="swiper-multiple-slides">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide rounded"
-                        style="background-image: url(<?= base_url('assets/img/custom/slide1.jpeg') ?>)">
-                        Pola Asuh dan Perkembangan Bayi dan Balita
-                    </div>
-                    <div class="swiper-slide rounded"
-                        style="background-image: url(<?= base_url('assets/img/custom/slide2.jpeg') ?>)">
-                        Bayi dan Balita < 5 Tahun </div>
-                            <div class="swiper-slide rounded"
-                                style="background-image: url(<?= base_url('assets/img/custom/slide3.jpeg') ?>)">
-                                Seputar Imunisasi
-                            </div>
-                            <div class="swiper-slide rounded"
-                                style="background-image: url(<?= base_url('assets/img/custom/slide4.jpeg') ?>)">
-                                Karsinoma Nasofaring pada Anak
-                            </div>
-                            <div class="swiper-slide rounded"
-                                style="background-image: url(<?= base_url('assets/img/custom/slide5.jpeg') ?>)">
-                                Lingkungan Sehat dan Aman Bayi dan Balita
-                            </div>
-                            <div class="swiper-slide rounded"
-                                style="background-image: url(<?= base_url('assets/img/custom/slide6.jpeg') ?>)">
-                                Teknologi Wolbachia dalam Pengendalian Demam Berdarah di Indonesia
-                            </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
+                    <div class="swiper-slide rounded" style="background-image: url(<?= base_url('assets/img/custom/buku-bacaan-serial-posyandu.png') ?>)" data-pdf="<?= base_url('assets/file/buku-bacaan-serial-posyandu.pdf') ?>"></div>
+                    <div class="swiper-slide rounded" style="background-image: url(<?= base_url('assets/img/custom/buku-pmba-rev.png') ?>)" data-pdf="<?= base_url('assets/file/buku-pmba-rev.pdf') ?>"></div>
+                    <div class="swiper-slide rounded" style="background-image: url(<?= base_url('assets/img/custom/buku-kia-2023.png') ?>)" data-pdf="<?= base_url('assets/file/buku-kia-2023.pdf') ?>"></div>
+                    <div class="swiper-slide rounded" style="background-image: url(<?= base_url('assets/img/custom/slide4.jpeg') ?>)" data-url="https://ayosehat.kemkes.go.id/topik-penyakit/skrining-kesehatan-pada-anak/karsinoma-nasofaring-pada-anak">Karsinoma Nasofaring pada Anak</div>
+                    <div class="swiper-slide rounded" style="background-image: url(<?= base_url('assets/img/custom/slide5.jpeg') ?>)" data-url="https://ayosehat.kemkes.go.id/topik-usia/bayi-dan-balita/lingkungan-sehat-dan-aman-bayi-dan-balita">Lingkungan Sehat dan Aman Bayi dan Balita</div>
+                    <div class="swiper-slide rounded" style="background-image: url(<?= base_url('assets/img/custom/slide6.jpeg') ?>)" data-url="https://ayosehat.kemkes.go.id/teknologi-wolbachia-dalam-pengendalian-demam-berdarah-di-indonesia">Teknologi Wolbachia dalam Pengendalian Demam Berdarah di Indonesia</div>
                 </div>
+                <div class="swiper-pagination"></div>
             </div>
             <!--/ Information -->
 
             <!-- Total Record Per Month -->
-            <div class="col-lg-12 col-md-6 col-12">
+            <div class="col-lg-12 col-md-6 col-12 mt-4">
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
@@ -50,7 +32,7 @@
             <!--/ Total Record Per Month -->
 
             <!-- Sales This Months -->
-            <div class="col-lg-12 col-sm-12">
+            <div class="col-lg-12 col-sm-12 mt-4">
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
@@ -100,6 +82,17 @@
                             <div class="card-info">
                                 <h5 class="mb-0">0 %</h5>
                                 <small class="text-muted">Persentase Kenaikan BB (N) Pada Bulan Kemarin</small>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3">
+                            <div class="avatar">
+                                <div class="avatar-initial bg-label-success rounded">
+                                    <i class="mdi mdi-check-decagram-outline mdi-24px"></i>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <h5 class="mb-0">0</h5>
+                                <small class="text-muted">Balita Yang Sudah Lulus</small>
                             </div>
                         </div>
                     </div>

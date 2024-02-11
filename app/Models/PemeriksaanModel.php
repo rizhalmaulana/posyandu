@@ -16,4 +16,13 @@ class PemeriksaanModel extends Model
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
+
+    public function getListPemeriksaanByIdBalita($idBalita = "", $idPosyandu = "") {
+        $query = $this->db->table($this->table)
+                ->where('id_balita', $idBalita)
+                ->where('id_posyandu', $idPosyandu)
+                ->get();
+
+        return $query->getResultArray();
+    }
 }

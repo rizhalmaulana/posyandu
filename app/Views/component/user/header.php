@@ -39,7 +39,6 @@
     <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/typeahead-js/typeahead.css'); ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css'); ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css'); ?>" />
-    <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/apex-charts/apex-charts.css'); ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/swiper/swiper.css'); ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/sweetalert2/sweetalert2.css'); ?>" />
 
@@ -48,6 +47,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/vendor/css/pages/cards-analytics.css'); ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/vendor/css/pages/ui-carousel.css'); ?>" />
     <!-- Helpers -->
+
     <script src="<?= base_url('assets/vendor/js/helpers.js'); ?>"></script>
 
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
@@ -169,7 +169,7 @@
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="pages-profile-user.html">
+                                        <a class="dropdown-item" href="<?= site_url('dashboard/profile') ?>">
                                             <i class="mdi mdi-account-outline me-2"></i>
                                             <span class="align-middle">Profil Ku</span>
                                         </a>

@@ -578,13 +578,28 @@ class DashboardController extends ResourceController
         echo view('component/user/footer');
     }
 
-    public function data_kms_balita_view($id = "")
+    public function data_kms_balita_view($idBalita = "")
     {
         helper(['form']);
         
+        $balitaModel = new BalitaModel();
+        $kunjunganModel = new KunjunganModel();
+        $pemeriksaanModel = new PemeriksaanModel();
+
+        $idPosyandu = session()->get('id_posyandu');
+
+        
+        $listDataBalita = $balitaModel->getBalitaByIdBalita($idBalita);
+        $listRiwayatKunjunganBalita = $kunjunganModel->getRiwayatKunjunganBalita($idBalita);
+        $listPemeriksaanBalita = $pemeriksaanModel->getListPemeriksaanByIdBalita($idBalita, $idPosyandu);
+
         $data = [
             'title'     => 'Menu KMS Balita | Tembang Santri',
             'session'   => session()->get(),
+            'list_data_balita'      => $listDataBalita,
+            'umur_balita_saat_ini'  => $this->hitungUmur($listDataBalita->tanggal_lahir),
+            'list_riwayat_kunjungan'    => $listRiwayatKunjunganBalita,
+            'list_pemeriksaan'          => $listPemeriksaanBalita,
             'status_active_menu'    => 'masterbalita',
             'status_active_submenu' => 'databalita'
         ];
@@ -594,6 +609,26 @@ class DashboardController extends ResourceController
         echo view('component/user/footer');
     }
     
+    public function profile($id = "") {
+        helper(['form']);
+        
+        $adminModel = new AdminModel();
+        $posyanduModel = new PosyanduModel();
+
+        $idPosyandu = session()->get('id_posyandu');
+        
+        $data = [
+            'title'     => 'Profile Ku | Tembang Santri',
+            'session'   => session()->get(),
+            'status_active_menu'    => 'dashboard',
+            'status_active_submenu' => 'monitoring'
+        ];
+        
+        echo view('component/user/header', $data);
+        echo view('layout/user/profile', $data);
+        echo view('component/user/footer');
+    }
+
     public function hitungUmur($tanggalLahir)
     {
         // Konversi tanggal lahir ke objek DateTime

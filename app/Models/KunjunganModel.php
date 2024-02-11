@@ -19,14 +19,12 @@ class KunjunganModel extends Model
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
 
-    public function getDataKunjunganBalita($id = "") {
+    public function getDataKunjunganBalita($idBalita = "") {
         $query = $this->db->table($this->table)
-                ->select('tbl_kunjungan.id as id, tbl_kunjungan.tgl_kunjungan as tgl_kunjungan, tbl_kunjungan.bulan_kunjungan as bulan_kunjungan, tbl_kunjungan.tahun_kunjungan as tahun_kunjungan, 
-                tbl_kunjungan.status_kunjungan as status_kunjungan')
-                ->where('id_balita', $id)
+                ->where('id_balita', $idBalita)
                 ->get();
         
-        $query->getResultArray();
+        $query->getResult();
     }
 
     public function getTotalDataKunjunganByMonth() {
