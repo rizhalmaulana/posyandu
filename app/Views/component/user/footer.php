@@ -17,13 +17,11 @@
                         </div>
                     </footer>
                     <!-- / Footer -->
-
                     <div class="content-backdrop fade"></div>
                 </div>
                 <!--/ Content wrapper -->
             </div>
             <!--/ Layout container -->
-
         </div>
     </div>
     <!-- Overlay -->

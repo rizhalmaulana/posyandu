@@ -36,7 +36,7 @@ class KunjunganModel extends Model
                 ->countAllResults();
     }
 
-    public function getTotalKunjunganPerMonthOfYear($year) {
+    public function getTotalKunjunganPerMonthOfYear($year, $idPosyandu) {
         // Initialize the result array
         $result = [];
 

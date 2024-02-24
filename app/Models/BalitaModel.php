@@ -55,19 +55,20 @@ class BalitaModel extends Model
             ->countAllResults();
     }
 
-    public function getTotalDataBalitaPerMonthOfYear($year) {
+    public function getTotalDataBalitaPerMonthOfYear($year, $idPosyandu) {
         // Initialize the result array
         $result = [];
 
         // Query data for the specified year
         $query = $this->db->query("
             SELECT
+                id_posyandu AS id_posyandu,
                 MONTH(created_at) AS month,
                 COUNT(*) AS total_children
             FROM
                 $this->table
             WHERE
-                YEAR(created_at) = ?
+                YEAR(created_at) = ? AND id_posyandu = ".$idPosyandu."
             GROUP BY
                 MONTH(created_at)
             ORDER BY

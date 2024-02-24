@@ -17,7 +17,7 @@
             <!--/ Information -->
 
             <!-- Total Record Per Month -->
-            <div class="col-lg-12 col-md-6 col-12 mt-4">
+            <div class="col-lg-12 col-md-12 col-12 mt-4">
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
@@ -101,7 +101,7 @@
             <!--/ Sales This Months -->
         </div>
 
-        <div class="col-lg-12 col-sm-6">
+        <div class="col-lg-12 col-sm-12">
             <div class="card">
                 <div class="card-header">
                     <div class="row">

@@ -32,9 +32,6 @@ class DashboardController extends ResourceController
         $kunjunganAllBalita = $balitaModel->getKunjunganBalita();
         $sessIdPosyandu = session()->get('id_posyandu');
 
-        date_default_timezone_set('Asia/Jakarta');
-        $currentYear = date('Y');
-
         $data = [
             'title'             => 'Dashboard Utama | Tembang Santri',
             'totalbalita'       => $balitaModel->getCountBalitaByIdPosyandu($sessIdPosyandu),
@@ -551,8 +548,10 @@ class DashboardController extends ResourceController
         $balitaModel = new BalitaModel();
         $kunjunganModel = new KunjunganModel();
 
-        $resultBayiPerYear = $balitaModel->getTotalDataBalitaPerMonthOfYear($currentYear);
-        $resultKunjunganPerYear = $kunjunganModel->getTotalKunjunganPerMonthOfYear($currentYear);
+        $sessIdPosyandu = session()->get('id_posyandu');
+
+        $resultBayiPerYear = $balitaModel->getTotalDataBalitaPerMonthOfYear($currentYear, $sessIdPosyandu);
+        $resultKunjunganPerYear = $kunjunganModel->getTotalKunjunganPerMonthOfYear($currentYear, $sessIdPosyandu);
 
         $response = [
             'list_terdaftar'    => $resultBayiPerYear,
