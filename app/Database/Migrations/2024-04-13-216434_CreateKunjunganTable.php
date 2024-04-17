@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateJawabanPerkembanganTable extends Migration
+class CreateKunjunganTable extends Migration
 {
     public function up()
     {
@@ -20,14 +20,25 @@ class CreateJawabanPerkembanganTable extends Migration
                 'unsigned' => true,
                 'constraint' => 5,
             ],
-            'id_pertanyaan' => [
+            'id_posyandu' => [
                 'type' => 'INT',
                 'unsigned' => true,
                 'constraint' => 5,
             ],
-            'jawaban' => [
+            'tgl_kunjungan' => [
+                'type' => 'DATE',
+            ],
+            'bulan_kunjungan' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'tahun_kunjungan' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'status_kunjungan' => [
                 'type' => 'ENUM',
-                'constraint' => ['0', '1'],
+                'constraint' => ['Hadir', 'Tidak Hadir'],
             ],
             
             'created_at datetime default current_timestamp',
@@ -35,13 +46,13 @@ class CreateJawabanPerkembanganTable extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('id_balita', 'tbl_balita', 'id'); // Assuming there's a 'posyandu' table
-        $this->forge->addForeignKey('id_pertanyaan', 'tbl_pertanyaan_perkembangan', 'id'); // Assuming there's a 'posyandu' table
-        $this->forge->createTable('tbl_jawaban_perkembangan');
+        $this->forge->addForeignKey('id_balita', 'tbl_balita', 'id'); // Assuming there's a 'balita' table
+        $this->forge->addForeignKey('id_posyandu', 'tbl_posyandu', 'id'); // Assuming there's a 'posyandu' table
+        $this->forge->createTable('tbl_kunjungan');
     }
 
     public function down()
     {
-        $this->forge->dropTable('tbl_jawaban_perkembangan');
+        $this->forge->dropTable('tbl_kunjungan');
     }
 }

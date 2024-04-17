@@ -27,10 +27,10 @@ class DashboardController extends ResourceController
         
         $balitaModel = new BalitaModel();
         $kunjunganModel = new KunjunganModel();
-        
-        $totalKunjunganPerBulan = $kunjunganModel->getTotalDataKunjunganByMonth();
-        $kunjunganAllBalita = $balitaModel->getKunjunganBalita();
         $sessIdPosyandu = session()->get('id_posyandu');
+
+        $kunjunganAllBalita = $balitaModel->getKunjunganBalita();
+        $totalKunjunganPerBulan = $kunjunganModel->getTotalDataKunjunganByMonth($sessIdPosyandu);
 
         $data = [
             'title'             => 'Dashboard Utama | Tembang Santri',
@@ -446,6 +446,7 @@ class DashboardController extends ResourceController
 
         $postDataKunjungan = [
             'id_balita'     => $idBalita,
+            'id_posyandu'   => $idPosyandu,
             'tgl_kunjungan' => $tglKunjungan,
             'bulan_kunjungan' => $currentMonthName,
             'tahun_kunjungan' => $currentYear,

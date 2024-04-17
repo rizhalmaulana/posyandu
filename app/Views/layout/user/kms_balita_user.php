@@ -132,7 +132,7 @@
                         </div>
                         <hr>
                         <div class="mt-4">
-                            <button type="submit" class="btn btn-primary me-2" onclick="simpanHasilKBM()">Simpan Perkembangan</button>
+                            <button type="submit" class="btn btn-primary me-2" onclick="simpanHasilKBM()">Simpan</button>
                             <button type="reset" class="btn btn-outline-secondary" id="batanPeriksa">Kembali</button>
                         </div>
                     </div>
@@ -274,7 +274,7 @@
                         </div>
                         <hr>
                         <div class="mt-4">
-                            <button type="submit" class="btn btn-primary me-2" onclick="simpanHasilKBM()">Simpan Perkembangan</button>
+                            <button type="submit" class="btn btn-primary me-2" onclick="simpanHasilKBM()">Simpan</button>
                             <button type="reset" class="btn btn-outline-secondary" id="batanPeriksa">Kembali</button>
                         </div>
                     </div>

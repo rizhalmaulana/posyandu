@@ -39,23 +39,9 @@ class CreateAdminTable extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'nama_lengkap' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-            ],
-            'jenis_kelamin' => [
-                'type' => 'ENUM',
-                'constraint' => ['Laki-laki', 'Perempuan'],
-            ],
-            'tanggal_lahir' => [
-                'type' => 'DATE',
-            ],
             'verified' => [
                 'type' => 'BOOLEAN',
                 'default' => false,
-            ],
-            'alamat' => [
-                'type' => 'TEXT',
             ],
             'password' => [
                 'type' => 'VARCHAR',
@@ -64,11 +50,6 @@ class CreateAdminTable extends Migration
             'status' => [
                 'type' => 'ENUM',
                 'constraint' => ['Master Admin', 'Admin', 'User'],
-            ],
-            'admin_selfie' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-                'null' => true,
             ],
             'created_at datetime default current_timestamp',
             'updated_at datetime default current_timestamp on update current_timestamp',

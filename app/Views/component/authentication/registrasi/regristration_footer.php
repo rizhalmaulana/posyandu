@@ -29,7 +29,7 @@
     <script src="<?= base_url('assets/js/main.js') ?>"></script>
 
     <!-- Page JS -->
-    <script src="<?= base_url('assets/js/pages-auth-multisteps.js') ?>"></script>
+    <script src="<?= base_url('assets/js/pages-auth.js') ?>"></script>
 
     <!-- Get Data Kecamatan -->
     <script>
@@ -37,7 +37,7 @@
             $('.header-kecamatan').hide();
 
             // Event listener for the first dropdown
-            $('#selectCity').change(function() {
+            $('#select-city').change(function() {
                 // Get the selected value
                 var valueIdKota = $(this).val();
                 fetchDataKecamatan(valueIdKota);
@@ -71,7 +71,7 @@
 
             // Create a new select element
             var select = $(
-                '<select id="selectKecamatan" class="select2 form-select" name="selectKecamatan" data-allow-clear="true">');
+                '<select id="select-kecamatan" class="select2 form-select" name="select-kecamatan" data-allow-clear="true"><option value="">Pilih Kecamatan</option>');
 
             // Add options to the select element
             $.each(options.data, function(index, value) {
@@ -81,7 +81,7 @@
                 }));
             });
 
-            $('.form-select-kecamatan').append('<label for="selectKecamatan">Asal Kecamatan Posyandu</label>');
+            $('.form-select-kecamatan').append('<label for="select-kecamatan">Asal Kecamatan Posyandu</label>');
             // Append the select element to the result container
             $('.form-select-kecamatan').append(select);
             $('.header-kecamatan').show();
@@ -96,7 +96,7 @@
             // Event listener for the first dropdown
             $('.form-select-kecamatan').change(function() {
                 // Get the selected value
-                var valueIdKecamatan = $('#selectKecamatan').val();
+                var valueIdKecamatan = $('#select-kecamatan').val();
                 fetchDataKelurahan(valueIdKecamatan);
             });
         });
@@ -128,7 +128,7 @@
 
             // Create a new select element
             var select = $(
-                '<select id="selectKelurahan" class="select2 form-select" name="selectKelurahan" data-allow-clear="true">');
+                '<select id="select-kelurahan" class="select2 form-select" name="select-kelurahan" data-allow-clear="true"><option value="">Pilih Kelurahan</option>');
 
             // Add options to the select element
             $.each(options.data, function(index, value) {
@@ -138,7 +138,7 @@
                 }));
             });
 
-            $('.form-select-kelurahan').append('<label for="selectKelurahan">Asal Kelurahan Posyandu</label>');
+            $('.form-select-kelurahan').append('<label for="select-kelurahan">Asal Kelurahan Posyandu</label>');
             // Append the select element to the result container
             $('.form-select-kelurahan').append(select);
             $('.header-kelurahan').show();
@@ -153,9 +153,9 @@
             // Event listener for the first dropdown
             $('.form-select-kelurahan').change(function() {
                 // Get the selected value
-                var valueIdKota = $('#selectCity').val();
-                var valueIdKecamatan = $('#selectKecamatan').val();
-                var valueIdKelurahan = $('#selectKelurahan').val();
+                var valueIdKota = $('#select-city').val();
+                var valueIdKecamatan = $('#select-kecamatan').val();
+                var valueIdKelurahan = $('#select-kelurahan').val();
 
                 fetchDataPosyandu(valueIdKota, valueIdKecamatan, valueIdKelurahan);
             });
@@ -203,7 +203,7 @@
             $('.form-select-posyandu').empty();
 
             // Create a new select element
-            var select = $('<select id="selectPosyandu" class="select2 form-select" name="selectPosyandu" data-allow-clear="true">');
+            var select = $('<select id="select-posyandu" class="select2 form-select" name="select-posyandu" data-allow-clear="true"><option value="">Pilih Posyandu</option>');
 
             // Add options to the select element
             $.each(options.data, function(index, value) {
@@ -213,7 +213,7 @@
                 }));
             });
 
-            $('.form-select-posyandu').append('<label for="selectPosyandu">Pilih Posyandu</label>');
+            $('.form-select-posyandu').append('<label for="select-posyandu">Pilih Posyandu</label>');
             // Append the select element to the result container
             $('.form-select-posyandu').append(select);
             $('.header-posyandu').show();
@@ -285,12 +285,11 @@
             formData.address = $('#multiStepsForm [name="multiStepsAddress"]').val(); // Alamat Sendiri
 
             // Get selected value from the <select> element
-            formData.gender = $('#selectGender').val(); // Jenis Kelamin
-            formData.city = $('#selectCity').val(); // Asal Kota
-            formData.kecamatan = $('#selectKecamatan').val(); // Asal Kota
-            formData.kelurahan = $('#selectKelurahan').val(); // Asal Kota
-            formData.posyandu = $('#selectPosyandu').val(); // Asal Posyandu
-            formData.status =  $('#selectStatus').val(); // Status Akses
+            formData.city = $('#select-city').val(); // Asal Kota
+            formData.kecamatan = $('#select-kecamatan').val(); // Asal Kota
+            formData.kelurahan = $('#select-kelurahan').val(); // Asal Kota
+            formData.posyandu = $('#select-posyandu').val(); // Asal Posyandu
+            formData.status =  $('#select-status').val(); // Status Akses
 
             $.ajax({
                 type: 'POST',

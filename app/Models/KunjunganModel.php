@@ -7,11 +7,12 @@ use CodeIgniter\Model;
 class KunjunganModel extends Model
 {
     protected $table1           = 'tbl_balita';
+    protected $table2           = 'tbl_posyandu';
 
     protected $table            = 'tbl_kunjungan';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['id', 'id_balita', 'tgl_kunjungan', 'bulan_kunjungan', 'tahun_kunjungan', 'status_kunjungan'];
+    protected $allowedFields    = ['id', 'id_balita', 'id_posyandu', 'tgl_kunjungan', 'bulan_kunjungan', 'tahun_kunjungan', 'status_kunjungan'];
 
     // Dates
     protected $useTimestamps = false;

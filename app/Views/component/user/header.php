@@ -42,6 +42,12 @@
     <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/swiper/swiper.css'); ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/sweetalert2/sweetalert2.css'); ?>" />
 
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/bootstrap-select/bootstrap-select.css'); ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/select2/select2.css'); ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/flatpickr/flatpickr.css'); ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/tagify/tagify.css'); ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/libs/formvalidation/dist/css/formValidation.min.css'); ?>" />
+
     <!-- Page CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/vendor/css/pages/cards-statistics.css'); ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/vendor/css/pages/cards-analytics.css'); ?>" />

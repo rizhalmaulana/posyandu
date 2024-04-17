@@ -33,8 +33,8 @@ class CreateInformasiTable extends Migration
                 'constraint' => '100',
                 'null' => true,
             ],
-            'created_at datetime default current_timestamp',
-            'updated_at datetime default current_timestamp on update current_timestamp',
+            'created_at DATETIME default current_timestamp',
+            'updated_at DATETIME default current_timestamp on update current_timestamp',
         ]);
 
         $this->forge->addKey('id', true);

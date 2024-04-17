@@ -35,14 +35,13 @@ class CreateJawabanPerkembanganTable extends Migration
                 'constraint' => ['0', '1'],
             ],
             
-            'created_at datetime default current_timestamp',
-            'updated_at datetime default current_timestamp on update current_timestamp',
+            'created_at DATETIME default current_timestamp',
+            'updated_at DATETIME default current_timestamp on update current_timestamp',
         ]);
 
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('id_balita', 'tbl_balita', 'id'); // Assuming there's a 'posyandu' table
         $this->forge->addForeignKey('id_pertanyaan', 'tbl_pertanyaan_perkembangan', 'id'); // Assuming there's a 'posyandu' table
-        $this->forge->addForeignKey('id_master_pertanyaan', 'tbl_master_pertanyaan', 'id'); // Assuming there's a 'posyandu' table
         $this->forge->createTable('tbl_jawaban_perkembangan');
     }
 

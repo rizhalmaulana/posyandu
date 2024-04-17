@@ -9,7 +9,7 @@ class AdminModel extends Model
     protected $table            = 'tbl_admin';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['id','id_posyandu', 'id_kota', 'id_kecamatan', 'id_kelurahan', 'username', 'nama_lengkap', 'jenis_kelamin', 'tanggal_lahir', 'verified', 'alamat', 'password', 'status', 'admin_selfie'];
+    protected $allowedFields    = ['id','id_posyandu', 'id_kota', 'id_kecamatan', 'id_kelurahan', 'username', 'verified', 'password', 'status'];
 
     // Dates
     protected $useTimestamps = true;

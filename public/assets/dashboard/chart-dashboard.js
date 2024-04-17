@@ -147,7 +147,7 @@
             },
             yaxis: {
                 min: 0,
-                max: 20,
+                max: 150,
                 show: true,
                 tickAmount: 5,
                 labels: {

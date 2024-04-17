@@ -50,16 +50,26 @@
     <!-- endbuild -->
 
     <!-- Vendors JS -->
+    <script src="<?= base_url('assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js') ?>"></script>
+    <script src="<?= base_url('assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js') ?>"></script>
+    <script src="<?= base_url('assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js') ?>"></script>
+    
     <script src="<?= base_url('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/libs/chartjs/chartjs.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/libs/apex-charts/apexcharts.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/libs/swiper/swiper.js'); ?>"></script>
 
+    <script src="<?= base_url('assets/vendor/libs/bootstrap-select/bootstrap-select.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/libs/moment/moment.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/libs/flatpickr/flatpickr.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/libs/tagify/tagify.js'); ?>"></script>
+
     <!-- Main JS -->
     <script src="<?= base_url('assets/js/main.js'); ?>"></script>
 
     <!-- Page JS -->
+    <script src="<?= base_url('assets/js/form-validation.js'); ?>"></script>
     <script src="<?= base_url('assets/js/ui-carousel.js'); ?>"></script>
 
     <script src="<?= base_url('assets/js/dashboards-analytics.js'); ?>"></script>

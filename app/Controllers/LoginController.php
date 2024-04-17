@@ -58,7 +58,7 @@ class LoginController extends ResourceController
 
         } else {
             // Login failed
-            $session->setFlashdata('msg', 'Email atau password anda salah.');   
+            session()->setFlashdata('msg', 'Email atau password anda salah.');   
             return redirect()->to('/login');
         }
     }

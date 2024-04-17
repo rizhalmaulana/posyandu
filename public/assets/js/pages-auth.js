@@ -1,6 +1,6 @@
 /**
- *  Pages Authentication
- */
+*  Pages Authentication
+*/
 
 'use strict';
 const formAuthentication = document.querySelector('#formAuthentication');
@@ -19,6 +19,61 @@ document.addEventListener('DOMContentLoaded', function (e) {
               stringLength: {
                 min: 6,
                 message: 'Nama pengguna harus lebih dari 6 karakter'
+              }
+            }
+          },
+          'select-status': {
+            validators: {
+              callback: {
+                message: 'Hak Akses belum dipilih',
+                callback: function(input) {
+                  // Check if the value equals 'Status'
+                  return input.value !== '';
+                }
+              }
+            }
+          },
+          'select-city': {
+            validators: {
+              callback: {
+                message: 'Asal Kota belum dipilih',
+                callback: function(input) {
+                  // Check if the value equals 'Status'
+                  return input.value !== '';
+                }
+              }
+            }
+          },
+          'select-kecamatan': {
+            validators: {
+              callback: {
+                message: 'Asal Kecamatan belum dipilih',
+                callback: function(input) {
+                  // Check if the value equals 'Status'
+                  return input.value !== '';
+                }
+              }
+            }
+          },
+          'select-kelurahan': {
+            validators: {
+              callback: {
+                message: 'Asal Kelurahan belum dipilih',
+                callback: function(input) {
+                  // Check if the value equals 'Status'
+                  return input.value !== '';
+                }
+              }
+            }
+          },
+          'select-posyandu': {
+            validators: {
+              callback: {
+                message: 'Posyandu belum dipilih',
+                callback: function(input) {
+                  // Check if the value equals 'Status'
+                  return input.value !== '';
+                }
               }
             }
           },
@@ -86,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             rowSelector: '.mb-3'
           }),
           submitButton: new FormValidation.plugins.SubmitButton(),
-
+          
           defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
           autoFocus: new FormValidation.plugins.AutoFocus()
         },
@@ -99,10 +154,10 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
       });
     }
-
+    
     //  Two Steps Verification
     const numeralMask = document.querySelectorAll('.numeral-mask');
-
+    
     // Verification masking
     if (numeralMask.length) {
       numeralMask.forEach(e => {

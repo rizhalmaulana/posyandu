@@ -29,8 +29,8 @@ class CreatePertanyaanPerkembanganTable extends Migration
                 'constraint' => 255,
             ],
             
-            'created_at datetime default current_timestamp',
-            'updated_at datetime default current_timestamp on update current_timestamp',
+            'created_at DATETIME default current_timestamp',
+            'updated_at DATETIME default current_timestamp on update current_timestamp',
         ]);
 
         $this->forge->addKey('id', true);
